@@ -14,6 +14,7 @@ jobs:
       - run: bundle update
       - run: |
           bin/mergem --verbose --token=${{ secrets.TOKEN }} \
+            --github-cache=yegor256/mergem/cache/latest.txt \
             --repo=yegor256/* \
             --repo=objectionary/* \
             --repo=polystat/* \
