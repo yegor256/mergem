@@ -42,4 +42,13 @@ class TestPulls < Minitest::Test
     puts e.message
     skip
   end
+
+  def test_ignore_archived
+    api = Octokit::Client.new
+    m = Mergem::Pulls.new(api, Loog::VERBOSE, ['yegor256/netbout'])
+    assert_equal(0, m.each)
+  rescue Octokit::TooManyRequests => e
+    puts e.message
+    skip
+  end
 end

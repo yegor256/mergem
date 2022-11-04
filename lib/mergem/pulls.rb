@@ -45,6 +45,11 @@ class Mergem::Pulls
       end
     end
     names.each do |repo|
+      r = @api.repository(repo)
+      if r[:archived]
+        @loog.debug("Repository #{repo} is archived, ignoring")
+        next
+      end
       json = @api.pull_requests(repo, state: 'open')
       @loog.debug("Found #{json.count} pull requests in #{repo}")
       json.each do |p|
