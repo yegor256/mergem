@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+# Copyright (c) 2022 Yegor Bugayenko
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the 'Software'), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+STDOUT.sync = true
+
+require 'slop'
+require 'loog'
+require 'octokit'
+require 'backtrace'
+require 'fileutils'
+require 'obk'
+require_relative '../lib/mergem/version'
+
+loog = Loog::REGULAR
+
+def config(path)
+  f = File.expand_path(path)
+  args = []
+  args += File.readlines(f).map(&:strip).reject { |a| a.empty? } if File.exist?(f)
+  args
+end
+
+args = config('~/.mergem') + config('.mergem') + ARGV
+
+opts = Slop.parse(args, strict: true, help: true) do |o|
+  o.banner = "Usage (#{mergem::VERSION}): mergem [options]"
+  o.bool '-h', '--help', 'Show these instructions'
+  o.bool '--version', 'Show current version'
+  o.bool '--verbose', 'Print as much log messages as possible'
+  o.bool '--dry', 'Make no real round trips to GitHub'
+  o.string '--cache', 'Use this file as a cache, to avoid duplicated roudtrips to GitHub', default: '.mergem-cache'
+  o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 1000
+  o.string '--token', 'GitHub authentication token', required: true
+  o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog', required: true
+end
+
+if opts.help? || opts[:coder].empty?
+  puts opts
+  exit
+end
+
+if opts.verbose?
+  loog = Loog::VERBOSE
+end
+
+if opts.version?
+  loog.info(mergem::VERSION)
+  exit
+end
+
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
+begin
+  cache = File.absolute_path(opts[:cache])
+  loog.debug("Cache file is #{cache}")
+  opts[:repos].each do |r|
+    loog.debug("Repo #{r} checked")
+  end
+  loog.debug("#{repos} checked, #{pulls} processed")
+rescue StandardError => e
+  loog.error(Backtrace.new(e))
+  exit -1
+end
