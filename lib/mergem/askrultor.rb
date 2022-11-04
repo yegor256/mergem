@@ -37,11 +37,20 @@ class Mergem::AskRultor
       @loog.debug('You are not using GitHub token...')
     end
     issue = @api.issue(repo, num)
-    return false unless @bots.include?(issue[:user][:login])
+    title = "#{repo}##{num}"
+    author = issue[:user][:login]
+    unless @bots.include?(author)
+      @loog.debug("#{title} is authored by #{author}")
+      return false
+    end
     json = @api.issue_comments(repo, num)
-    @loog.debug("Found #{json.count} comments in #{repo}##{num}")
-    return false unless json.find { |j| j[:user][:login] == user }.nil?
+    @loog.debug("Found #{json.count} comments in #{title}")
+    unless json.find { |j| j[:user][:login] == user }.nil?
+      @loog.debug("#{title} was already discussed by #{user}")
+      return false
+    end
     @api.add_comment(repo, num, '@rultor please, try to merge')
+    @loog.debug("Comment added to #{title}")
     true
   end
 end

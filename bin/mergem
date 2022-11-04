@@ -29,6 +29,7 @@ require 'fileutils'
 require 'obk'
 require_relative '../lib/mergem/version'
 require_relative '../lib/mergem/pulls'
+require_relative '../lib/mergem/askrultor'
 
 loog = Loog::REGULAR
 
@@ -84,7 +85,7 @@ end
 begin
   cache = File.absolute_path(opts[:cache])
   if File.exist?(cache)
-    loog.debug("Cache file is '#{cache}' (#{File.readlines(cache)} lines)")
+    loog.debug("Cache file is '#{cache}' (#{File.readlines(cache).count} lines)")
   else
     File.write(cache, '')
     loog.debug("Cache file '#{cache}' was absent")
@@ -95,9 +96,12 @@ begin
   else
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
       title = "#{repo}/##{pr}"
-      next unless File.readlines(cache).find(title).nil?
+      if File.readlines(cache).include?(title + "\n")
+        loog.debug("'#{title}' is already in cache")
+        next
+      end
       Mergem::AskRultor.new(api, loog).ask(repo, pr)
-      open(cache, 'a') { |f| f.puts title }
+      File.open(cache, 'a') { |f| f.puts title }
       loog.info("#{title} checked")
     end
   end
