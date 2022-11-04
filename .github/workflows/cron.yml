@@ -21,4 +21,5 @@ jobs:
           bin/mergem --verbose --token=${{ secrets.TOKEN }} \
             --repo=yegor256/* \
             --repo=objectionary/* \
-            --repo=polystat/*
+            --repo=polystat/* \
+            --repo=jcabi/*
