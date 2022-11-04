@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - uses: actions/download-artifact@v3
         with:
-          path: .mergem-cache
-          key: main
+          name: cache
+        continue-on-error: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
@@ -19,3 +19,7 @@ jobs:
       - run: |
           bin/mergem --verbose --token=${{ secrets.TOKEN }} \
             --repo=jcabi/*
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cache
+          path: .mergem-cache
