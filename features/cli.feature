@@ -11,6 +11,6 @@ Feature: Simple Reporting
     Then Exit code is zero
 
   Scenario: Simple roundtrip to GitHub
-    When I run bin/mergem with "--repo yegor256/mergem --dry"
-    Then Stdout contains "Repo yegor256/mergem checked"
+    When I run bin/mergem with "--repo yegor256/mergem --dry --verbose"
+    Then Stdout contains "1 PRs processed"
     And Exit code is zero

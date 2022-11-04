@@ -28,6 +28,7 @@ require 'backtrace'
 require 'fileutils'
 require 'obk'
 require_relative '../lib/mergem/version'
+require_relative '../lib/mergem/pulls'
 
 loog = Loog::REGULAR
 
@@ -69,16 +70,29 @@ end
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
+def api(opts, loog)
+  if opts.token?
+    api = Octokit::Client.new(:access_token => opts[:token])
+  else
+    api = Octokit::Client.new
+    loog.warn("Connecting to GitHub without a token, this may lead to errors, use --token")
+  end
+  api.auto_paginate = true
+  Obk.new(api, pause: opts[:delay])
+end
+
 begin
   cache = File.absolute_path(opts[:cache])
   loog.debug("Cache file is #{cache}")
-  repos = 0
-  pulls = 0
-  opts[:repo].each do |r|
-    loog.info("Repo #{r} checked")
-    repos += 1
+  api = api(opts, loog)
+  if opts.dry?
+    total = 1
+  else
+    total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
+      loog.info("PR #{repo}##{pr} checked")
+    end
   end
-  loog.debug("#{repos} checked, #{pulls} processed")
+  loog.debug("#{total} PRs processed")
 rescue StandardError => e
   loog.error(Backtrace.new(e))
   exit -1
