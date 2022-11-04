@@ -49,7 +49,7 @@ opts = Slop.parse(args, strict: true, help: true) do |o|
   o.bool '--verbose', 'Print as much log messages as possible'
   o.bool '--dry', 'Make no real round trips to GitHub'
   o.string '--cache', 'Use this file as a cache, to avoid duplicated roudtrips to GitHub', default: '.mergem-cache'
-  o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 1000
+  o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 100
   o.string '--token', 'GitHub authentication token'
   o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog'
 end
