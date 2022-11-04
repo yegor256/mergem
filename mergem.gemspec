@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'octokit', '~>4.0'
   s.add_runtime_dependency 'rainbow', '~>3.0'
   s.add_runtime_dependency 'slop', '~>4.4'
+  s.add_runtime_dependency 'tacky', '~>0.3'
   s.add_development_dependency 'codecov', '0.6.0'
   s.add_development_dependency 'cucumber', '8.0.0'
   s.add_development_dependency 'minitest', '5.15.0'

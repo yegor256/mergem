@@ -24,6 +24,7 @@ STDOUT.sync = true
 require 'slop'
 require 'loog'
 require 'octokit'
+require 'tacky'
 require 'backtrace'
 require 'fileutils'
 require 'obk'
@@ -79,7 +80,7 @@ def api(opts, loog)
     loog.warn("Connecting to GitHub without a token, this may lead to errors, use --token")
   end
   api.auto_paginate = true
-  Obk.new(api, pause: opts[:delay])
+  Tacky.new(Obk.new(api, pause: opts[:delay]))
 end
 
 begin
