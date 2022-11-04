@@ -106,6 +106,7 @@ begin
     end
   end
   loog.debug("#{total} PRs processed")
+  loog.debug("There are #{File.readlines(cache).count} lines in the cache file '#{cache}'")
 rescue StandardError => e
   loog.error(Backtrace.new(e))
   exit -1
