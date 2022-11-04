@@ -26,7 +26,7 @@ class Mergem::AskRultor
   def initialize(api, loog)
     @api = api
     @loog = loog
-    @bots = ['renovate[bot]', 'dependabot[bot]']
+    @bots = ['renovate[bot]', 'dependabot[bot]', '@dependabot-preview[bot]']
   end
 
   def ask(repo, num)
