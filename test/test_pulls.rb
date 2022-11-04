@@ -30,7 +30,7 @@ require_relative '../lib/mergem/pulls'
 class TestPulls < Minitest::Test
   def test_real
     api = Octokit::Client.new
-    m = Mergem::Pulls.new(api, Loog::VERBOSE, ['yegor256/blog'])
+    m = Mergem::Pulls.new(api, Loog::VERBOSE, ['yegor256/blog', 'polystat/*'])
     ms = []
     total = m.each do |repo, pr|
       ms << "#{repo}##{pr}"

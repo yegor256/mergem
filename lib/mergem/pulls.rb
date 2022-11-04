@@ -31,7 +31,20 @@ class Mergem::Pulls
 
   def each
     total = 0
+    names = []
     @repos.each do |repo|
+      if repo.end_with?('/*')
+        org = repo.split('/')[0]
+        @api.repositories(org).each do |r|
+          n = r['full_name']
+          @loog.debug("Found #{n} repo in @#{org}")
+          names << n
+        end
+      else
+        names << repo
+      end
+    end
+    names.each do |repo|
       json = @api.pull_requests(repo, state: 'open')
       @loog.debug("Found #{json.count} pull requests in #{repo}")
       json.each do |p|

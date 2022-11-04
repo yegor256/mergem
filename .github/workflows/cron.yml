@@ -12,11 +12,13 @@ jobs:
         with:
           path: .mergem-cache
           key: main
+          restore-keys: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
       - run: bundle update
       - run: |
           bin/mergem --verbose --token=${{ secrets.TOKEN }} \
-            --repo=yegor256/mergem \
-            --repo=yegor256/iri
+            --repo=yegor256/* \
+            --repo=objectionary/* \
+            --repo=polystat/*
