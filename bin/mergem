@@ -89,7 +89,11 @@ begin
     total = 1
   else
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
-      loog.info("PR #{repo}##{pr} checked")
+      title = "#{repo}/##{pr}"
+      next unless File.readlines(cache).find(title).nil?
+      Mergem::AskRultor.new(api, loog).ask(repo, pr)
+      open(cache, 'a') { |f| f.puts title }
+      loog.info("#{title} checked")
     end
   end
   loog.debug("#{total} PRs processed")
