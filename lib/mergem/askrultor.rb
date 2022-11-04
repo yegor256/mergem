@@ -26,6 +26,7 @@ class Mergem::AskRultor
   def initialize(api, loog)
     @api = api
     @loog = loog
+    @bots = ['renovate[bot]']
   end
 
   def ask(repo, num)
@@ -36,7 +37,7 @@ class Mergem::AskRultor
       @loog.debug('You are not using GitHub token...')
     end
     issue = @api.issue(repo, num)
-    return false unless issue[:user][:login] == 'renovate[bot]'
+    return false unless @bots.include?(issue[:user][:login])
     json = @api.issue_comments(repo, num)
     @loog.debug("Found #{json.count} comments in #{repo}##{num}")
     return false unless json.find { |j| j[:user][:login] == user }.nil?
