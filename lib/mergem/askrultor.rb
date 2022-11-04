@@ -32,7 +32,7 @@ class Mergem::AskRultor
     begin
       user = @api.user[:login]
     rescue Octokit::Unauthorized
-      user = ''
+      user = 'yegor256'
       @loog.debug('You are not using GitHub token...')
     end
     json = @api.issue_comments(repo, num)
