@@ -84,10 +84,10 @@ end
 begin
   cache = File.absolute_path(opts[:cache])
   if File.exist?(cache)
-    loog.debug("Cache file is #{cache} (#{File.readlines(cache)} lines)")
+    loog.debug("Cache file is '#{cache}' (#{File.readlines(cache)} lines)")
   else
     File.write(cache, '')
-    loog.debug("Cache file #{cache} was absent")
+    loog.debug("Cache file '#{cache}' was absent")
   end
   api = api(opts, loog)
   if opts.dry?
