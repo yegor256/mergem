@@ -19,7 +19,4 @@ jobs:
       - run: bundle update
       - run: |
           bin/mergem --verbose --token=${{ secrets.TOKEN }} \
-            --repo=yegor256/* \
-            --repo=objectionary/* \
-            --repo=polystat/* \
             --repo=jcabi/*
