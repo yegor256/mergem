@@ -41,18 +41,18 @@ end
 args = config('~/.mergem') + config('.mergem') + ARGV
 
 opts = Slop.parse(args, strict: true, help: true) do |o|
-  o.banner = "Usage (#{mergem::VERSION}): mergem [options]"
+  o.banner = "Usage (#{Mergem::VERSION}): mergem [options]"
   o.bool '-h', '--help', 'Show these instructions'
   o.bool '--version', 'Show current version'
   o.bool '--verbose', 'Print as much log messages as possible'
   o.bool '--dry', 'Make no real round trips to GitHub'
   o.string '--cache', 'Use this file as a cache, to avoid duplicated roudtrips to GitHub', default: '.mergem-cache'
   o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 1000
-  o.string '--token', 'GitHub authentication token', required: true
-  o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog', required: true
+  o.string '--token', 'GitHub authentication token'
+  o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog'
 end
 
-if opts.help? || opts[:coder].empty?
+if opts.help?
   puts opts
   exit
 end
@@ -62,7 +62,7 @@ if opts.verbose?
 end
 
 if opts.version?
-  loog.info(mergem::VERSION)
+  loog.info(Mergem::VERSION)
   exit
 end
 
@@ -72,8 +72,11 @@ Encoding.default_internal = Encoding::UTF_8
 begin
   cache = File.absolute_path(opts[:cache])
   loog.debug("Cache file is #{cache}")
-  opts[:repos].each do |r|
-    loog.debug("Repo #{r} checked")
+  repos = 0
+  pulls = 0
+  opts[:repo].each do |r|
+    loog.info("Repo #{r} checked")
+    repos += 1
   end
   loog.debug("#{repos} checked, #{pulls} processed")
 rescue StandardError => e

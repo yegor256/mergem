@@ -11,6 +11,6 @@ Feature: Simple Reporting
     Then Exit code is zero
 
   Scenario: Simple roundtrip to GitHub
-    When I run bin/mergem with "--repo yegor256/mergem --dry --token foo"
+    When I run bin/mergem with "--repo yegor256/mergem --dry"
     Then Stdout contains "Repo yegor256/mergem checked"
     And Exit code is zero
