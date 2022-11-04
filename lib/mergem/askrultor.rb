@@ -50,7 +50,7 @@ class Mergem::AskRultor
       return false
     end
     @api.add_comment(repo, num, '@rultor please, try to merge')
-    @loog.debug("Comment added to #{title}")
+    @loog.info("Comment added to #{title}")
     true
   end
 end
