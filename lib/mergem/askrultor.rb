@@ -26,7 +26,7 @@ class Mergem::AskRultor
   def initialize(api, loog)
     @api = api
     @loog = loog
-    @bots = ['renovate[bot]']
+    @bots = ['renovate[bot]', 'dependabot[bot]']
   end
 
   def ask(repo, num)
@@ -40,13 +40,13 @@ class Mergem::AskRultor
     title = "#{repo}##{num}"
     author = issue[:user][:login]
     unless @bots.include?(author)
-      @loog.debug("#{title} is authored by #{author}")
+      @loog.debug("#{title} is authored by @#{author} (not a bot)")
       return false
     end
     json = @api.issue_comments(repo, num)
     @loog.debug("Found #{json.count} comments in #{title}")
     unless json.find { |j| j[:user][:login] == user }.nil?
-      @loog.debug("#{title} was already discussed by #{user}")
+      @loog.debug("#{title} was already discussed by @#{user}")
       return false
     end
     @api.add_comment(repo, num, '@rultor please, try to merge')
