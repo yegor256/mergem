@@ -50,6 +50,7 @@ opts = Slop.parse(args, strict: true, help: true) do |o|
   o.bool '--verbose', 'Print as much log messages as possible'
   o.bool '--dry', 'Make no real round trips to GitHub'
   o.string '--cache', 'Use this file as a cache, to avoid duplicated roudtrips to GitHub', default: '.mergem-cache'
+  o.string '--github-cache', 'Place in GitHub for cache file, e.g. "yegor256/mergem/cache/latest.txt" (repo, branch, path)'
   o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 100
   o.string '--token', 'GitHub authentication token'
   o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog'
@@ -84,14 +85,20 @@ def api(opts, loog)
 end
 
 begin
+  api = api(opts, loog)
   cache = File.absolute_path(opts[:cache])
+  if opts['github-cache']
+    org, repo, branch, path = opts['github-cache'].split('/', 4)
+    c = api.contents("#{org}/#{repo}", path: path, ref: branch)
+    File.write(cache, c[:content])
+    loog.info("Cache is taken from '#{org}/#{repo}' (#{File.readlines(cache).count} lines)")
+  end
   if File.exist?(cache)
     loog.debug("Cache file is '#{cache}' (#{File.readlines(cache).count} lines)")
   else
     File.write(cache, '')
     loog.debug("Cache file '#{cache}' was absent")
   end
-  api = api(opts, loog)
   if opts.dry?
     total = 1
   else
@@ -108,6 +115,12 @@ begin
   end
   loog.debug("#{total} PRs processed")
   loog.debug("There are #{File.readlines(cache).count} lines in the cache file '#{cache}'")
+  if opts['github-cache']
+    org, repo, branch, path = opts['github-cache'].split('/', 4)
+    lines = File.readlines(cache).count
+    api.update_contents("#{org}/#{repo}", path, "#{lines} lines", '', branch: branch, file: cache)
+    loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
+  end
 rescue StandardError => e
   loog.error(Backtrace.new(e))
   exit -1
