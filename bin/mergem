@@ -24,6 +24,7 @@ STDOUT.sync = true
 require 'slop'
 require 'loog'
 require 'octokit'
+require 'digest'
 require 'tacky'
 require 'backtrace'
 require 'fileutils'
@@ -118,7 +119,11 @@ begin
   if opts['github-cache']
     org, repo, branch, path = opts['github-cache'].split('/', 4)
     lines = File.readlines(cache).count
-    api.update_contents("#{org}/#{repo}", path, "#{lines} lines", '', branch: branch, file: cache)
+    api.update_contents(
+      "#{org}/#{repo}", path, "#{lines} lines",
+      Digest::SHA256.hexdigest(File.read(cache)),
+      branch: branch, file: cache
+    )
     loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
   end
 rescue StandardError => e
