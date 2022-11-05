@@ -121,7 +121,7 @@ begin
     lines = File.readlines(cache).count
     api.update_contents(
       "#{org}/#{repo}", path, "#{lines} lines",
-      Digest::SHA256.hexdigest(File.read(cache)),
+      api.create_blob("#{org}/#{repo}", File.read(cache)),
       branch: branch, file: cache
     )
     loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
