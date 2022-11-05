@@ -93,8 +93,9 @@ begin
     org, repo, branch, path = opts['github-cache'].split('/', 4)
     c = api.contents("#{org}/#{repo}", path: path, ref: branch)
     File.write(cache, c[:content])
-    blob = api.create_blob("#{org}/#{repo}", File.read(cache))
     loog.info("Cache is taken from '#{org}/#{repo}' (#{File.readlines(cache).count} lines)")
+    blob = api.create_blob("#{org}/#{repo}", File.read(cache))
+    loog.info("Blob of cache is '#{blob}'")
   end
   if File.exist?(cache)
     loog.debug("Cache file is '#{cache}' (#{File.readlines(cache).count} lines)")
