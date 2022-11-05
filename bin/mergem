@@ -94,8 +94,8 @@ begin
     c = api.contents("#{org}/#{repo}", path: path, ref: branch)
     File.write(cache, c[:content])
     loog.info("Cache is taken from '#{org}/#{repo}' (#{File.readlines(cache).count} lines)")
-    blob = api.create_blob("#{org}/#{repo}", File.read(cache))
-    loog.info("Blob of cache is '#{blob}'")
+    sha = c[:sha]
+    loog.info("SHA of cache is '#{sha}'")
   end
   if File.exist?(cache)
     loog.debug("Cache file is '#{cache}' (#{File.readlines(cache).count} lines)")
@@ -124,7 +124,7 @@ begin
     lines = File.readlines(cache).count
     api.update_contents(
       "#{org}/#{repo}", path, "#{lines} lines",
-      blob, branch: branch, file: cache
+      sha, branch: branch, file: cache
     )
     loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
   end
