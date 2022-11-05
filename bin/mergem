@@ -88,10 +88,12 @@ end
 begin
   api = api(opts, loog)
   cache = File.absolute_path(opts[:cache])
+  blog = ''
   if opts['github-cache']
     org, repo, branch, path = opts['github-cache'].split('/', 4)
     c = api.contents("#{org}/#{repo}", path: path, ref: branch)
     File.write(cache, c[:content])
+    blob = api.create_blob("#{org}/#{repo}", File.read(cache))
     loog.info("Cache is taken from '#{org}/#{repo}' (#{File.readlines(cache).count} lines)")
   end
   if File.exist?(cache)
@@ -121,8 +123,7 @@ begin
     lines = File.readlines(cache).count
     api.update_contents(
       "#{org}/#{repo}", path, "#{lines} lines",
-      api.create_blob("#{org}/#{repo}", File.read(cache)),
-      branch: branch, file: cache
+      blob, branch: branch, file: cache
     )
     loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
   end
