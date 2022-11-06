@@ -122,6 +122,11 @@ begin
   if opts['github-cache']
     org, repo, branch, path = opts['github-cache'].split('/', 4)
     lines = File.readlines(cache).count
+    if lines > 5000
+      head = lines - 5000
+      File.write(cache, File.readlines(cache).drop(head).join)
+      loog.info("Cache file is too long, we removed #{head} lines from its head")
+    end
     api.update_contents(
       "#{org}/#{repo}", path, "#{lines} lines",
       sha, File.read(cache), branch: branch, file: cache

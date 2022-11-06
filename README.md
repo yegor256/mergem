@@ -22,6 +22,12 @@ Then, run it locally and read its output:
 $ mergem --repo yegor256/mergem --verbose --token <YOUR_GITHUB_TOKEN>
 ```
 
+First, it will find all pull requests in `yegor256/mergem` GitHub repository,
+which were not yet discussed by the owner of the token. Then, it will ignore those
+pull requests that are coming not from [Renovate](https://github.com/apps/renovate)
+or [Dependabot](https://github.com/dependabot). Then, it will post `@rultor merge`
+text message to each pull request left in the list.
+
 ## How to contribute
 
 Read [these guidelines](https://www.yegor256.com/2014/04/15/github-guidelines.html).
