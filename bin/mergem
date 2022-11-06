@@ -124,7 +124,7 @@ begin
     lines = File.readlines(cache).count
     api.update_contents(
       "#{org}/#{repo}", path, "#{lines} lines",
-      sha, branch: branch, file: cache
+      sha, File.read(cache), branch: branch, file: cache
     )
     loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
   end
