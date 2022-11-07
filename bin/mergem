@@ -106,7 +106,7 @@ begin
   if opts.dry?
     total = 1
   else
-    seen = File.readlines(cache)
+    seen = File.readlines(cache, chomp: true)
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
       title = "#{repo}/##{pr}"
       if seen.include?(title)
