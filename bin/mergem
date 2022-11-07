@@ -107,10 +107,11 @@ begin
     total = 1
   else
     seen = File.readlines(cache, chomp: true)
+    p seen[0..10]
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
       title = "#{repo}/##{pr}"
       if seen.include?(title)
-        loog.debug("'#{title}' is already in cache")
+        loog.debug("'#{title}' is already in cache, skipping it")
         next
       end
       Mergem::AskRultor.new(api, loog).ask(repo, pr)
