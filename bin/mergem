@@ -106,10 +106,9 @@ begin
   if opts.dry?
     total = 1
   else
-    seen = File.readlines(cache, chomp: true)
-    p seen[0..10]
+    seen = File.readlines(cache, chomp: true).map { |t| t.strip }
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
-      title = "#{repo}/##{pr}"
+      title = "#{repo}##{pr}"
       if seen.include?(title)
         loog.debug("'#{title}' is already in cache, skipping it")
         next
