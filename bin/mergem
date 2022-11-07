@@ -106,16 +106,18 @@ begin
   if opts.dry?
     total = 1
   else
+    seen = File.readlines(cache)
     total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
       title = "#{repo}/##{pr}"
-      if File.readlines(cache).include?(title + "\n")
+      if seen.include?(title)
         loog.debug("'#{title}' is already in cache")
         next
       end
       Mergem::AskRultor.new(api, loog).ask(repo, pr)
-      File.open(cache, 'a') { |f| f.puts title }
+      seen << title
       loog.info("#{title} checked")
     end
+    File.write(cache, seen.join("\n"))
   end
   loog.debug("#{total} PRs processed")
   loog.debug("There are #{File.readlines(cache).count} lines in the cache file '#{cache}'")
