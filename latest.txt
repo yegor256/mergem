@@ -1,5 +1,3 @@
-VFV0WlZscGFaREZrV1dKRgpVbWxUUlVwYVZrZDBiMVV5Um5OVFdIQmhUVEpr
-VEZacVNuZFRNazE1Vld4YWFWSkdjR2hhVjNoTFVsWnMKY3dwaFJVNXFWbTFT
 V0ZkclZqQmhiRXBaV2tSV1drMUhVak5EYkdSelYxaGthbE5IVWxaVmJURlRW
 MFp3ClJsZHVUbGhTTUhCS1ZrZDBkMkpIU2tnS1pFUmFWbFpGYkRSYVJFcEhZ
 ekpLUjJGR1VtbGhNSEJQVVRKegplR1JXUm5WU2JHaFhZbFpLVFZkVVFrZGtk
@@ -4632,6 +4630,7 @@ yegor256/ru.yegor256.com#17
 yegor256/ru.yegor256.com#14
 yegor256/ru.yegor256.com#5
 yegor256/ru.yegor256.com#4
+yegor256/rultor#1518
 yegor256/rultor#1461
 yegor256/rultor#1443
 yegor256/rultor#1440
@@ -4986,6 +4985,7 @@ jcabi/jcabi-odesk#26
 jcabi/jcabi-odesk#24
 jcabi/jcabi-odesk#23
 jcabi/jcabi-s3#72
+jcabi/jcabi-simpledb#75
 jcabi/jcabi-simpledb#22
 jcabi/jcabi-ssh#120
 jcabi/jcabi-ssh#85
