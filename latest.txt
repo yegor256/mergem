@@ -1,4 +1,3 @@
-bXcyClZqRmtNQXBpTVZsNVUyNVNVMkpIYUZCVmFrNURWVlphY2xwRk9WVlNi
 WGhaVkZaVk5GTXhiRlpYYms1cgpVakJXTmxZeU1XOWhWbHBWVm01YVYwMVhU
 alFLV1RJeFUxRnRUa2hpUm1kTFZXcE9iazFzWkZWU2JYUk8KVFd4S1NWVXll
 RzlWTWtaeVkwZG9WMkp1UWxSVVZWcHlaREZ3UlZWck5WZGlWR3N4Q2xkWGRH
@@ -4986,6 +4985,7 @@ jcabi/jcabi-odesk#24
 jcabi/jcabi-odesk#23
 jcabi/jcabi-s3#139
 jcabi/jcabi-s3#72
+jcabi/jcabi-simpledb#101
 jcabi/jcabi-simpledb#22
 jcabi/jcabi-ssh#120
 jcabi/jcabi-ssh#85
