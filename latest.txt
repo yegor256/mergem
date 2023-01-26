@@ -1,6 +1,3 @@
-bXhUWWtoQ1QxbFVSbmRrTVdSWApWMnMxYkZKVVJsbERiRkoxVldzNVUwMHdT
-bEJYVm1Rd1VqRlNRbU5GVW1sV1ZtOTNDbFpyWTNoaU1XUjAKVTJ4b2ExSkZj
-R0ZXYm5CSFZVWnNWbGR1VG10U01GWTJWbGN4TUdGV1duTmpSRnBZVmpOQ1RG
 WkVTazlUClFYQldZVEo0YndwVVZ6VkRWREZhY2xkdVRsVlNiWGhaVkZaVk5X
 RkdTblJsUkVKYVZrVTFhRmxWWkV0VwphelZZVDBWMFYwMVhUalJaTWpGVFUw
 WldkVlZzWkdrS1lYcFdkMVpHWkhwTlYxRjRZMFZaUzFsVmFFdGgKUm05NlVX
@@ -4604,6 +4601,7 @@ yegor256/qulice#1150
 yegor256/qulice#1146
 yegor256/qulice#1144
 yegor256/random-port#12
+yegor256/rehttp#155
 yegor256/requs#113
 yegor256/ru.yegor256.com#18
 yegor256/ru.yegor256.com#17
@@ -4897,6 +4895,7 @@ jcabi/jcabi-beanstalk-maven-plugin#42
 jcabi/jcabi-beanstalk-maven-plugin#41
 jcabi/jcabi-beanstalk-maven-plugin#40
 jcabi/jcabi-beanstalk-maven-plugin#39
+jcabi/jcabi-dynamo#209
 jcabi/jcabi-dynamo#151
 jcabi/jcabi-dynamodb-maven-plugin#113
 jcabi/jcabi-dynamodb-maven-plugin#88
@@ -4984,6 +4983,7 @@ jcabi/jcabi-odesk#27
 jcabi/jcabi-odesk#26
 jcabi/jcabi-odesk#24
 jcabi/jcabi-odesk#23
+jcabi/jcabi-s3#153
 jcabi/jcabi-s3#139
 jcabi/jcabi-s3#72
 jcabi/jcabi-simpledb#22
