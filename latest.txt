@@ -1,6 +1,3 @@
-RnBOTW5oUFdsVlZNVkZ0VGtWV2JVWlhUV3hKZVZkVVNuZFQKYXpGV1RsaENV
-QXBXTW5od1ZXNXdjMlJWVG5SU2EyZExWVzB4ZDJGRk1IZE5XRVpWVm14S1Qx
-VjZTbGRYClJscDBUbGRzVGsxSGR6RldSM2hUVjIxU2MySklVbXdLVTBad2FG
 UlhNVzlpTVdSVlUycENiR0V5ZHpKVgpiR2h6VWtkS2RHVklUbGhoYTJzeFEy
 MVdWazFZUmxkV1JYQk9WRmQwZDJWc2JIRlRiWFJwQ21RelFtRlcKYWtFeFpW
 WnJlbUpGTld4U1ZFWlRXVEJTVjFsV1dYbFZha3BhVFc1Q1MxUldWVEZqUlRs
@@ -4893,6 +4890,8 @@ jcabi/jcabi-beanstalk-maven-plugin#41
 jcabi/jcabi-beanstalk-maven-plugin#40
 jcabi/jcabi-beanstalk-maven-plugin#39
 jcabi/jcabi-dynamo#151
+jcabi/jcabi-dynamodb-maven-plugin#124
+jcabi/jcabi-dynamodb-maven-plugin#123
 jcabi/jcabi-dynamodb-maven-plugin#113
 jcabi/jcabi-dynamodb-maven-plugin#88
 jcabi/jcabi-email#67
@@ -4952,6 +4951,7 @@ jcabi/jcabi-maven-skin#52
 jcabi/jcabi-maven-skin#51
 jcabi/jcabi-maven-skin#49
 jcabi/jcabi-maven-skin#47
+jcabi/jcabi-maven-slf4j#33
 jcabi/jcabi-maven-slf4j#28
 jcabi/jcabi-maven-slf4j#24
 jcabi/jcabi-mysql-maven-plugin#123
