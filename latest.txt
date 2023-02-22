@@ -1,4 +1,3 @@
-ZHNWMDFHYjNoVk1XaDNWRzFXVmxSdQpWbWxTTTJob1ZGZHdjMDVXVWxoalJs
 cE9ZVE5rTlZsVlpHOEtZVkZ3YVZZeFNYZFJNbmh6VjBVMVNHTkYKTld4aE1W
 cE5WMnhhYTFZeVNuUlRXSEJVVjBkNFVGWnJXbk5OYkd4V1drVmthMVp0T1RW
 VVZtUnZDbUZYClJsWk5WRnBWVmxWYU0xUnNXbmRYUm5CSlYyMXZTMWxYZEhK
@@ -4892,6 +4891,7 @@ jcabi/jcabi-beanstalk-maven-plugin#42
 jcabi/jcabi-beanstalk-maven-plugin#41
 jcabi/jcabi-beanstalk-maven-plugin#40
 jcabi/jcabi-beanstalk-maven-plugin#39
+jcabi/jcabi-dynamo#228
 jcabi/jcabi-dynamo#151
 jcabi/jcabi-dynamodb-maven-plugin#113
 jcabi/jcabi-dynamodb-maven-plugin#88
