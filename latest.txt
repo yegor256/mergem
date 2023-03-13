@@ -1,4 +1,3 @@
-VWJsWnBVak5vCmFGUlhjSE5PVmxKWVkwWmFUbUV6WkRaVlZ6QTFZV3hPUm1O
 SE9WaFdSWEEyUTIxR2NrMVdWbE5XUmxwRgpDbGx0TVRSak1FNXpZak5zVUZk
 SGVFOVpWM2hXWlZaU1JWUnJUbWxOYXpWS1ZUSXhiMWRyTVhWVWJrWlYKVm14
 S1IxUnJWazlrVjBwSVpVZEdUZ3BoYlhjeFZrWmtkMVpuY0U1aE0yUTJWVmN3
@@ -4785,6 +4784,7 @@ objectionary/home#115
 objectionary/home#113
 objectionary/home#111
 objectionary/home#94
+objectionary/news.eolang.org#29
 objectionary/phie#37
 objectionary/reducing-programs-to-objects#18
 objectionary/reo#52
