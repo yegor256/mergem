@@ -1,3 +1,4 @@
+YXpGV1RsaENVRmRIYUhKV2Frb3pUV3hPV1dORgpjR3hoZWtaVFdUQlNWMWxX
 V1hsVmFrcGFUVzVDU3dwVVZsVXhZMFU1V1dGSGRGZE5ibU41VlRGb2QxTm4K
 Y0d4V1ZHeFRXVEJTVjFsV1dYbFZha3BhVFc1Q1MxUldWVEZqUlRsWllVZDBW
 MDF1WTNrS1VUSjBjMDVzClRsbGlSa0pTVjBWRmVGWXllR3RoTWxKMFZHNUdW
@@ -4201,7 +4202,6 @@ yegor256/jo#33
 yegor256/jo#32
 yegor256/jpeek-maven-plugin#15
 yegor256/kdpcover#15
-yegor256/latexmk-action#10
 yegor256/mailanes#141
 yegor256/mailanes#139
 yegor256/mailanes#137
