@@ -1,4 +1,3 @@
-TUZsclpFOU9WbEpWVkdzMFMxZHFUa05OYkdSWVRWaGthVkp0ZERaVwpWelZE
 WVZVeGNWWnRPVnBOYWxaNVdrZDRkMWRGT1VsVmJXaFRDazFHYjNkV01WSlBV
 ekpLU0ZSWWNGWlcKTTBKUFZtdGtlbVZzUlhsTlJGWm9WakJhTUVOc1duUmpS
 M1JUVFc1bmVWRXlNVXRrUmtwMVlrZDRWZ3BsCmJYaDZWMWMxY21WSFNYaGlS
@@ -4129,6 +4128,7 @@ yegor256/latex-best-practices#8
 yegor256/mailanes#160
 yegor256/mailanes#156
 yegor256/mailanes#154
+yegor256/micromap#114
 yegor256/micromap#113
 yegor256/obk#8
 yegor256/obk#6
