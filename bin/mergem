@@ -130,12 +130,12 @@ begin
       loog.info("Cache file is too long, we removed #{head} lines from its head")
     end
     api.update_contents(
-      "#{org}/#{repo}", path, "#{lines} lines",
+      "#{org}/#{repo}", path, "#{File.readlines(cache).count} lines",
       sha, File.read(cache), branch: branch, file: cache
     )
-    loog.info("Cache is was placed to '#{org}/#{repo}' (#{lines} lines)")
+    loog.info("Cache file was placed to '#{org}/#{repo}' (#{lines} lines)")
   end
 rescue StandardError => e
   loog.error(Backtrace.new(e))
-  exit -1
+  exit 1
 end
