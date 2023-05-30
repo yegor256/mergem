@@ -49,7 +49,7 @@ class Mergem::AskRultor
       @loog.debug("#{title} was already discussed by @#{user}")
       return true
     end
-    sha = @api.issue(repo, num)[:head][:sha]
+    sha = @api.pull_request(repo, num)[:head][:sha]
     @api.check_runs_for_ref(repo, sha)[:check_runs].each do |check|
       if check[:status] != 'completed'
         @loog.debug("Check #{check[:id]} at #{title} is still running, let's try to merge later")
