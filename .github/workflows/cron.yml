@@ -13,9 +13,9 @@ jobs:
           ruby-version: 3.0
       - run: bundle update
       - run: |
+          # --github-cache=yegor256/mergem/cache/latest.txt \
           bin/mergem --verbose \
             --token=${{ secrets.TOKEN }} \
-            # --github-cache=yegor256/mergem/cache/latest.txt \
             --repo=yegor256/* \
             --repo=objectionary/* \
             --repo=polystat/* \
