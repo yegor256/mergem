@@ -34,7 +34,7 @@ class Mergem::AskRultor
       user = @api.user[:login]
     rescue Octokit::Unauthorized
       user = 'yegor256'
-      @loog.debug('You are not using GitHub token...')
+      @loog.debug('You are not using GitHub token :( Try to use --token option.')
     end
     issue = @api.issue(repo, num)
     title = "#{repo}##{num}"
@@ -48,6 +48,17 @@ class Mergem::AskRultor
     unless json.find { |j| j[:user][:login] == user }.nil?
       @loog.debug("#{title} was already discussed by @#{user}")
       return true
+    end
+    sha = @api.issue(repo, num)[:head][:sha]
+    @api.check_runs_for_ref(repo, sha)[:check_runs].each do |check|
+      if check[:status] != 'completed'
+        @loog.debug("Check #{check[:id]} at #{title} is still running, let's try to merge later")
+        return false
+      end
+      if check[:conclusion] != 'success'
+        @loog.debug("Check #{check[:id]} at #{title} failed, no reason to try to merge")
+        return true
+      end
     end
     @api.add_comment(repo, num, '@rultor please, try to merge')
     @loog.info("Comment added to #{title}")
