@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Yegor Bugayenko
+# Copyright (c) 2022-2023 Yegor Bugayenko
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -20,7 +20,7 @@
 
 # Ask Rultor to merge a pull request.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
-# Copyright:: Copyright (c) 2022 Yegor Bugayenko
+# Copyright:: Copyright (c) 2022-2023 Yegor Bugayenko
 # License:: MIT
 class Mergem::AskRultor
   def initialize(api, loog)
@@ -41,13 +41,13 @@ class Mergem::AskRultor
     author = issue[:user][:login]
     unless @bots.include?(author)
       @loog.debug("#{title} is authored by @#{author} (not a bot)")
-      return false
+      return true
     end
     json = @api.issue_comments(repo, num)
     @loog.debug("Found #{json.count} comments in #{title}")
     unless json.find { |j| j[:user][:login] == user }.nil?
       @loog.debug("#{title} was already discussed by @#{user}")
-      return false
+      return true
     end
     @api.add_comment(repo, num, '@rultor please, try to merge')
     @loog.info("Comment added to #{title}")

@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Yegor Bugayenko
+# Copyright (c) 2022-2023 Yegor Bugayenko
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -25,14 +25,14 @@ require_relative '../lib/mergem/askrultor'
 
 # Test for AskRultor.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
-# Copyright:: Copyright (c) 2022 Yegor Bugayenko
+# Copyright:: Copyright (c) 2022-2023 Yegor Bugayenko
 # License:: MIT
 class TestAskRultor < Minitest::Test
   def test_real
     api = Octokit::Client.new
     m = Mergem::AskRultor.new(api, Loog::VERBOSE)
     asked = m.ask('yegor256/mergem', 1)
-    assert(!asked)
+    assert(asked)
   rescue Octokit::TooManyRequests => e
     puts e.message
     skip
