@@ -31,7 +31,7 @@ class TestAskRultor < Minitest::Test
   def test_real
     api = Octokit::Client.new
     m = Mergem::AskRultor.new(api, Loog::VERBOSE)
-    asked = m.ask('yegor256/mergem', 1)
+    asked = m.ask('yegor256/0pdd', 463)
     assert(asked)
   rescue Octokit::TooManyRequests => e
     puts e.message

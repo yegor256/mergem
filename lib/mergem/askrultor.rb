@@ -50,7 +50,8 @@ class Mergem::AskRultor
       return true
     end
     sha = @api.pull_request(repo, num)[:head][:sha]
-    @api.check_runs_for_ref(repo, sha)[:check_runs].each do |check|
+    checks = @api.check_runs_for_ref(repo, sha)[:check_runs]
+    checks.each do |check|
       if check[:status] != 'completed'
         @loog.debug("Check #{check[:id]} at #{title} is still running, let's try to merge later")
         return false
@@ -60,6 +61,7 @@ class Mergem::AskRultor
         return true
       end
     end
+    @loog.debug("All #{checks.count} check(s) completed successfully in #{title]")
     @api.add_comment(repo, num, '@rultor please, try to merge')
     @loog.info("Comment added to #{title}")
     true

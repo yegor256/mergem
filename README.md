@@ -41,3 +41,9 @@ $ bundle exec rake
 ```
 
 If it's clean and you don't see any error messages, submit your pull request.
+
+In order to run a single test:
+
+```
+$ bundle exec ruby test/test_askrultor.rb
+```
