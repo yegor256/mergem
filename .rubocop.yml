@@ -21,3 +21,5 @@ Layout/EmptyLineAfterGuardClause:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
