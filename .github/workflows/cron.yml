@@ -12,6 +12,7 @@ jobs:
         with:
           ruby-version: 3.0
       - run: bundle update
+      - run: bundle exec rake rubocop
       - run: |
           # --github-cache=yegor256/mergem/cache/latest.txt \
           bin/mergem --verbose \
