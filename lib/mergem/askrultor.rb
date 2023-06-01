@@ -60,9 +60,9 @@ class Mergem::AskRultor
         @loog.debug("Check #{check[:id]} at #{title} failed, no reason to try to merge")
         return true
       end
-      @loog.debug("Check #{check[:id]} at #{title} is '#{check[:status]}/#{check[:conclusion]}'")
+      @loog.debug("Check #{check[:id]} at #{title} is '#{check[:status]}/#{check[:conclusion]}', good!")
     end
-    @loog.debug("All #{checks.count} check(s) completed successfully in #{title]")
+    @loog.debug("All #{checks.count} check(s) completed successfully in #{title}")
     @api.add_comment(repo, num, '@rultor please, try to merge')
     @loog.info("Comment added to #{title}")
     true
