@@ -21,4 +21,5 @@ jobs:
             --repo=objectionary/* \
             --repo=polystat/* \
             --repo=sttc/* \
+            --repo=zold-io/* \
             --repo=jcabi/*
