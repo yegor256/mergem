@@ -23,16 +23,54 @@ $ mergem --repo yegor256/mergem --verbose --token <YOUR_GITHUB_TOKEN>
 ```
 
 First, it will find all pull requests in `yegor256/mergem` GitHub repository,
-which were not yet discussed by the owner of the token. Then, it will ignore those
-pull requests that are coming not from [Renovate](https://github.com/apps/renovate)
-or [Dependabot](https://github.com/dependabot). Then, it will post `@rultor merge`
+which were not yet discussed by the owner of the token. Then, it will ignore
+those
+pull requests that are coming not
+from [Renovate](https://github.com/apps/renovate)
+or [Dependabot](https://github.com/dependabot). Then, it will
+post `@rultor merge`
 text message to each pull request left in the list.
+
+## Token
+
+`mergem` requires a GitHub token to be passed via `--token` option. In order to
+receive one, go to your GitHub account, then to "Settings", then to "Developer
+Settings" (or just use the [link](https://github.com/settings/tokens)).
+
+### Classic Token
+
+You can create a classic token with `public_repo` ("Access public repositories")
+scope. It will give `mergem` all the required permissions to read and write
+comments to your repositories.
+
+### Fine-grained Token
+
+Other option is to create a fine-grained token with "All Repositories" access.
+In this case you will need to add the following permissions to the token:
+
+* Issues, "Read and write"
+* Pull requests, "Read and write"
+* Contents, "Read and write"
+
+Pay attention that Fine-grained tokens might have some problems with
+repositories that are not owned by you or owned by some organization.
+In this case, you might need to ascquire the additional approval from the
+organization.
+
+> During the beta, organizations must opt in to fine-grained personal access
+> tokens. If your organization has not already opted-in, then you will be
+> prompted
+> to opt-in and set policies when you follow the steps below.
+
+You can read about setting a personal access token policy for your organization
+right [here](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
 
 ## How to contribute
 
 Read [these guidelines](https://www.yegor256.com/2014/04/15/github-guidelines.html).
 Make sure you build is green before you contribute
-your pull request. You will need to have [Ruby](https://www.ruby-lang.org/en/) 2.3+ and
+your pull request. You will need to have [Ruby](https://www.ruby-lang.org/en/)
+2.3+ and
 [Bundler](https://bundler.io/) installed. Then:
 
 ```
