@@ -35,34 +35,39 @@ text message to each pull request left in the list.
 
 `mergem` requires a GitHub token to be passed via `--token` option. In order to
 receive one, go to your GitHub account, then to "Settings", then to "Developer
-Settings" (or just use the [link](https://github.com/settings/tokens)).
+Settings" (or just use the ).
+
+`mergem` requires a GitHub token to be passed via the `--token` option. To
+obtain one, go to your GitHub account, then navigate to "Settings," and then
+to "Developer Settings" (or simply use
+the [link](https://github.com/settings/tokens).)
 
 ### Classic Token
 
-You can create a classic token with `public_repo` ("Access public repositories")
-scope. It will give `mergem` all the required permissions to read and write
-comments to your repositories.
+You can create a classic token with the `public_repo` ("Access public
+repositories") scope. It will grant `mergem` all the necessary permissions to
+read and write comments on repositories.
 
 ### Fine-grained Token
 
-Other option is to create a fine-grained token with "All Repositories" access.
-In this case you will need to add the following permissions to the token:
+Another option is to create a fine-grained token with "All Repositories" access.
+In this case, you will need to assign the following permissions to the token:
 
 * Issues, "Read and write"
 * Pull requests, "Read and write"
 * Contents, "Read and write"
 
-Pay attention that Fine-grained tokens might have some problems with
-repositories that are not owned by you or owned by some organization.
-In this case, you might need to ascquire the additional approval from the
-organization.
+Please note that fine-grained tokens might encounter issues with repositories
+not owned by you or owned by an organization. In such cases, you may need to
+obtain additional approval from the organization.
 
 > During the beta, organizations must opt in to fine-grained personal access
 > tokens. If your organization has not already opted-in, then you will be
 > prompted
 > to opt-in and set policies when you follow the steps below.
 
-You can read about setting a personal access token policy for your organization
+You can find information about setting a personal access token policy for your
+organization
 right [here](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
 
 ## How to contribute
