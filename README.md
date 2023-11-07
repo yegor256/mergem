@@ -24,12 +24,10 @@ $ mergem --repo yegor256/mergem --verbose --token <YOUR_GITHUB_TOKEN>
 
 First, it will find all pull requests in `yegor256/mergem` GitHub repository,
 which were not yet discussed by the owner of the token. Then, it will ignore
-those
-pull requests that are coming not
+those pull requests that are coming not
 from [Renovate](https://github.com/apps/renovate)
 or [Dependabot](https://github.com/dependabot). Then, it will
-post `@rultor merge`
-text message to each pull request left in the list.
+post `@rultor merge` text message to each pull request left in the list.
 
 ## Token
 
@@ -73,10 +71,9 @@ right [here](https://docs.github.com/en/organizations/managing-programmatic-acce
 ## How to contribute
 
 Read [these guidelines](https://www.yegor256.com/2014/04/15/github-guidelines.html).
-Make sure you build is green before you contribute
-your pull request. You will need to have [Ruby](https://www.ruby-lang.org/en/)
-2.3+ and
-[Bundler](https://bundler.io/) installed. Then:
+Make sure you build is green before you contribute your pull request. You will
+need to have [Ruby](https://www.ruby-lang.org/en/) 2.3+
+and [Bundler](https://bundler.io/) installed. Then:
 
 ```
 $ bundle update
