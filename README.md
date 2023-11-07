@@ -31,10 +31,6 @@ post `@rultor merge` text message to each pull request left in the list.
 
 ## Token
 
-`mergem` requires a GitHub token to be passed via `--token` option. In order to
-receive one, go to your GitHub account, then to "Settings", then to "Developer
-Settings" (or just use the ).
-
 `mergem` requires a GitHub token to be passed via the `--token` option. To
 obtain one, go to your GitHub account, then navigate to "Settings," and then
 to "Developer Settings" (or simply use
