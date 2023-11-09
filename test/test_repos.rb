@@ -21,23 +21,32 @@
 require 'minitest/autorun'
 require 'octokit'
 require 'loog'
-require_relative '../lib/mergem/pulls'
+require_relative '../lib/mergem/repos'
 
-# Test for Pulls.
+# Test for Repos.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
 # Copyright:: Copyright (c) 2022-2023 Yegor Bugayenko
 # License:: MIT
 class TestPulls < Minitest::Test
-  def test_real
+  def test_find_real
     api = Octokit::Client.new
-    m = Mergem::Pulls.new(api, Loog::VERBOSE, 'yegor256/blog')
+    r = Mergem::Repos.new(api, Loog::VERBOSE, ['yegor256/blog', 'polystat/*'])
     ms = []
-    total = m.each do |pr|
-      ms << "##{pr}"
+    total = r.each do |repo|
+      ms << repo
     end
     assert(!ms.empty?)
     assert_equal(total, ms.count)
     p ms
+  rescue Octokit::TooManyRequests => e
+    puts e.message
+    skip
+  end
+
+  def test_ignore_archived
+    api = Octokit::Client.new
+    r = Mergem::Repos.new(api, Loog::VERBOSE, ['yegor256/netbout'])
+    assert_equal(0, r.each)
   rescue Octokit::TooManyRequests => e
     puts e.message
     skip

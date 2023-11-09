@@ -18,28 +18,41 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require 'minitest/autorun'
-require 'octokit'
-require 'loog'
-require_relative '../lib/mergem/pulls'
-
-# Test for Pulls.
+# Find all repositories by the locations provided.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
 # Copyright:: Copyright (c) 2022-2023 Yegor Bugayenko
 # License:: MIT
-class TestPulls < Minitest::Test
-  def test_real
-    api = Octokit::Client.new
-    m = Mergem::Pulls.new(api, Loog::VERBOSE, 'yegor256/blog')
-    ms = []
-    total = m.each do |pr|
-      ms << "##{pr}"
+class Mergem::Repos
+  def initialize(api, loog, masks)
+    @api = api
+    @loog = loog
+    @masks = masks
+  end
+
+  def each
+    total = 0
+    names = []
+    @masks.each do |repo|
+      if repo.end_with?('/*')
+        org = repo.split('/')[0]
+        @api.repositories(org).each do |r|
+          n = r['full_name']
+          @loog.debug("Found #{n} repo in @#{org}")
+          names << n
+        end
+      else
+        names << repo
+      end
     end
-    assert(!ms.empty?)
-    assert_equal(total, ms.count)
-    p ms
-  rescue Octokit::TooManyRequests => e
-    puts e.message
-    skip
+    names.each do |n|
+      r = @api.repository(n)
+      if r[:archived]
+        @loog.debug("Repository #{n} is archived, ignoring")
+        next
+      end
+      yield n
+      total += 1
+    end
+    total
   end
 end

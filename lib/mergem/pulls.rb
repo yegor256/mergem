@@ -23,39 +23,19 @@
 # Copyright:: Copyright (c) 2022-2023 Yegor Bugayenko
 # License:: MIT
 class Mergem::Pulls
-  def initialize(api, loog, repos)
+  def initialize(api, loog, repo)
     @api = api
     @loog = loog
-    @repos = repos
+    @repo = repo
   end
 
   def each
+    json = @api.pull_requests(@repo, state: 'open')
+    @loog.debug("Found #{json.count} pull requests in #{@repo}")
     total = 0
-    names = []
-    @repos.each do |repo|
-      if repo.end_with?('/*')
-        org = repo.split('/')[0]
-        @api.repositories(org).each do |r|
-          n = r['full_name']
-          @loog.debug("Found #{n} repo in @#{org}")
-          names << n
-        end
-      else
-        names << repo
-      end
-    end
-    names.each do |repo|
-      r = @api.repository(repo)
-      if r[:archived]
-        @loog.debug("Repository #{repo} is archived, ignoring")
-        next
-      end
-      json = @api.pull_requests(repo, state: 'open')
-      @loog.debug("Found #{json.count} pull requests in #{repo}")
-      json.each do |p|
-        yield repo, p[:number]
-        total += 1
-      end
+    json.each do |p|
+      yield p[:number]
+      total += 1
     end
     total
   end

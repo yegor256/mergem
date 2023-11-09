@@ -31,6 +31,7 @@ require 'fileutils'
 require 'obk'
 require_relative '../lib/mergem/version'
 require_relative '../lib/mergem/pulls'
+require_relative '../lib/mergem/repos'
 require_relative '../lib/mergem/askrultor'
 
 loog = Loog::REGULAR
@@ -54,7 +55,8 @@ opts = Slop.parse(args, strict: true, help: true) do |o|
   o.string '--github-cache', 'Place in GitHub for cache file, e.g. "yegor256/mergem/cache/latest.txt" (repo, branch, path)'
   o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 100
   o.string '--token', 'GitHub authentication token'
-  o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog'
+  o.array '--repo', 'GitHub repo to check, e.g. yegor256/blog or yegor256/*'
+  o.array '--exclude', 'GitHub repository to exclude (no mask here, just name)'
 end
 
 if opts.help?
@@ -107,17 +109,20 @@ begin
     total = 1
   else
     seen = File.readlines(cache, chomp: true).map { |t| t.strip }
-    total = Mergem::Pulls.new(api, loog, opts[:repo]).each do |repo, pr|
-      title = "#{repo}##{pr}"
-      if seen.include?(title)
-        loog.debug("'#{title}' is already in cache, skipping it")
-        next
-      end
-      if Mergem::AskRultor.new(api, loog).ask(repo, pr)
-        seen << title
-        loog.info("#{title} checked")
-      else
-        loog.info("#{title} must be checked later")
+    total = 0
+    Mergem::Repos.new(api, loog, opts[:repo]).each do |repo|
+      total += Mergem::Pulls.new(api, loog, repo).each do |pr|
+        title = "#{repo}##{pr}"
+        if seen.include?(title)
+          loog.debug("'#{title}' is already in cache, skipping it")
+          next
+        end
+        if Mergem::AskRultor.new(api, loog).ask(repo, pr)
+          seen << title
+          loog.info("#{title} checked")
+        else
+          loog.info("#{title} must be checked later")
+        end
       end
     end
     File.write(cache, seen.join("\n"))
