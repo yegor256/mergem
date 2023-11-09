@@ -111,6 +111,10 @@ begin
     seen = File.readlines(cache, chomp: true).map { |t| t.strip }
     total = 0
     Mergem::Repos.new(api, loog, opts[:repo]).each do |repo|
+      if opts[:exclude].include?(repo)
+        loog.debug("'#{repo}' skipped because of --exclude")
+        next
+      end
       total += Mergem::Pulls.new(api, loog, repo).each do |pr|
         title = "#{repo}##{pr}"
         if seen.include?(title)

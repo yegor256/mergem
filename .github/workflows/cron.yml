@@ -22,4 +22,6 @@ jobs:
             --repo=polystat/* \
             --repo=sttc/* \
             --repo=zold-io/* \
-            --repo=jcabi/*
+            --repo=jcabi/* \
+            --exclude=objectionary/ineo-maven-plugin \
+            --exclude=objectionary/jeo-maven-plugin
