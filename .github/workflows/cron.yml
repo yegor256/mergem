@@ -19,6 +19,7 @@ jobs:
             --token=${{ secrets.TOKEN }} \
             --repo=yegor256/* \
             --repo=objectionary/* \
+            --repo=zerocracy/* \
             --repo=polystat/* \
             --repo=sttc/* \
             --repo=zold-io/* \
