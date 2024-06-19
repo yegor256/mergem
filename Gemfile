@@ -25,7 +25,7 @@ gem 'cucumber', '9.1.0', require: false
 gem 'minitest', '5.20.0', require: false
 gem 'rake', '13.1.0', require: false
 gem 'rdoc', '6.6.1', require: false
-gem 'rubocop', '1.52.1', require: false
+gem 'rubocop', '1.64.1', require: false
 gem 'rubocop-rspec', '2.25.0', require: false
 gem 'simplecov', '0.22.0', require: false
 gem 'xcop', '0.7.1', require: false
