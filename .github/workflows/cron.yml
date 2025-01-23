@@ -1,6 +1,6 @@
 ---
 name: cron
-on:
+'on':
   schedule:
     - cron: '17 * * * *'
 jobs:
