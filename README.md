@@ -6,7 +6,6 @@
 [![Gem Version](https://badge.fury.io/rb/mergem.svg)](http://badge.fury.io/rb/mergem)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/mergem/blob/master/LICENSE.txt)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yegor256/mergem.svg)](https://codecov.io/github/yegor256/mergem?branch=master)
-![Lines of code](https://img.shields.io/tokei/lines/github/yegor256/mergem)
 [![Hits-of-Code](https://hitsofcode.com/github/yegor256/mergem)](https://hitsofcode.com/view/github/yegor256/mergem)
 
 This simple script may help you deal with pull requests
