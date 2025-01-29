@@ -12,7 +12,7 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-      - run: bundle update
+      - run: bundle install
       - run: bundle exec rake rubocop
       - run: |
           # --github-cache=yegor256/mergem/cache/latest.txt \
