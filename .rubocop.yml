@@ -7,7 +7,6 @@ AllCops:
   TargetRubyVersion: 2.2
   NewCops: enable
   SuggestExtensions: false
-
 Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/MethodLength:
@@ -24,3 +23,7 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
+required:
+  - rubocop-rake
+  - rubocop-minitest
+  - rubocop-performance
