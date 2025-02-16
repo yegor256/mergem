@@ -35,12 +35,12 @@ class TestPulls < Minitest::Test
     total = r.each do |repo|
       ms << repo
     end
-    assert(!ms.empty?)
+    refute_empty(ms)
     assert_equal(total, ms.count)
     p ms
   rescue Octokit::TooManyRequests => e
     puts e.message
-    skip
+    skip('It is OK')
   end
 
   def test_ignore_archived
@@ -49,6 +49,6 @@ class TestPulls < Minitest::Test
     assert_equal(0, r.each)
   rescue Octokit::TooManyRequests => e
     puts e.message
-    skip
+    skip('It is OK')
   end
 end

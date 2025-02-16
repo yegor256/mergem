@@ -7,6 +7,8 @@ AllCops:
   TargetRubyVersion: 2.2
   NewCops: enable
   SuggestExtensions: false
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
 Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/MethodLength:

@@ -35,11 +35,11 @@ class TestPulls < Minitest::Test
     total = m.each do |pr|
       ms << "##{pr}"
     end
-    assert(!ms.empty?)
+    refute_empty(ms)
     assert_equal(total, ms.count)
     p ms
   rescue Octokit::TooManyRequests => e
     puts e.message
-    skip
+    skip('It is OK')
   end
 end

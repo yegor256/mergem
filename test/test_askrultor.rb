@@ -35,6 +35,6 @@ class TestAskRultor < Minitest::Test
     assert(asked)
   rescue Octokit::TooManyRequests => e
     puts e.message
-    skip
+    skip('It is OK')
   end
 end
