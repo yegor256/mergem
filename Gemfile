@@ -31,4 +31,4 @@ gem 'rubocop-performance', '>0', require: false
 gem 'rubocop-rake', '>0', require: false
 gem 'rubocop-rspec', '>0', require: false
 gem 'simplecov', '0.22.0', require: false
-gem 'xcop', '0.7.1', require: false
+gem 'xcop', '>0', require: false

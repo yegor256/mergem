@@ -135,7 +135,7 @@ GEM
     tacky (0.4.0)
     unicode-display_width (2.6.0)
     uri (1.0.2)
-    xcop (0.7.1)
+    xcop (0.7.2)
       differ (~> 0.1.2)
       nokogiri (~> 1.10)
       rainbow (~> 3.0)
@@ -160,7 +160,7 @@ DEPENDENCIES
   rubocop-rake (> 0)
   rubocop-rspec (> 0)
   simplecov (= 0.22.0)
-  xcop (= 0.7.1)
+  xcop (= 0.7.2)
 
 BUNDLED WITH
    2.5.16
