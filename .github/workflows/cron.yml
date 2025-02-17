@@ -39,7 +39,7 @@ jobs:
       - run: bundle exec rake rubocop
       - run: |
           # --github-cache=yegor256/mergem/cache/latest.txt \
-          bin/mergem --verbose \
+          bundle exec ruby bin/mergem --verbose \
             --token=${{ secrets.TOKEN }} \
             --repo=yegor256/* \
             --repo=objectionary/* \
