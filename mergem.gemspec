@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'iri', '~>0.5'
   s.add_runtime_dependency 'loog', '~>0.2'
   s.add_runtime_dependency 'obk', '0.3.0'
-  s.add_runtime_dependency 'octokit', '~>6.0'
+  s.add_runtime_dependency 'octokit', '>0'
   s.add_runtime_dependency 'rainbow', '~>3.0'
   s.add_runtime_dependency 'slop', '~>4.4'
   s.add_runtime_dependency 'tacky', '~>0.3'
