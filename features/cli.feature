@@ -1,3 +1,7 @@
+# (The MIT License)
+# 
+# SPDX-FileCopyrightText: Copyright (c) 2022-2025 Yegor Bugayenko
+# SPDX-License-Identifier: MIT
 Feature: Simple Reporting
   I want to be able to build a report
 
