@@ -1,8 +1,8 @@
-coverage/
-.idea/
 *.gem
-.bundle/
 .DS_Store
-rdoc/
+.bundle/
+.idea/
 .mergem-cache
+coverage/
+rdoc/
 vendor/
