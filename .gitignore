@@ -3,6 +3,9 @@
 .bundle/
 .idea/
 .mergem-cache
+.yardoc/
 coverage/
+doc/
+node_modules/
 rdoc/
 vendor/
