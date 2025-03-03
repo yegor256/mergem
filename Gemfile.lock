@@ -89,7 +89,7 @@ GEM
     public_suffix (6.0.1)
     racc (1.8.1)
     rainbow (3.1.1)
-    rake (13.1.0)
+    rake (13.2.1)
     rdoc (6.6.1)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
@@ -152,7 +152,7 @@ DEPENDENCIES
   cucumber (= 9.1.0)
   mergem!
   minitest (= 5.20.0)
-  rake (= 13.1.0)
+  rake (= 13.2.1)
   rdoc (= 6.6.1)
   rubocop (= 1.64.1)
   rubocop-minitest (> 0)

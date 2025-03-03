@@ -6,7 +6,7 @@ gemspec
 
 gem 'cucumber', '9.1.0', require: false
 gem 'minitest', '5.20.0', require: false
-gem 'rake', '13.1.0', require: false
+gem 'rake', '13.2.1', require: false
 gem 'rdoc', '6.6.1', require: false
 gem 'rubocop', '1.64.1', require: false
 gem 'rubocop-minitest', '>0', require: false
