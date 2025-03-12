@@ -65,7 +65,7 @@ GEM
     logger (1.6.6)
     loog (0.6.0)
     mini_mime (1.1.5)
-    minitest (5.20.0)
+    minitest (5.25.5)
     multi_test (1.1.0)
     net-http (0.6.0)
       uri
@@ -151,7 +151,7 @@ PLATFORMS
 DEPENDENCIES
   cucumber (= 9.1.0)
   mergem!
-  minitest (= 5.20.0)
+  minitest (= 5.25.5)
   rake (= 13.1.0)
   rdoc (= 6.6.1)
   rubocop (= 1.64.1)
