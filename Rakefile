@@ -44,7 +44,6 @@ end
 
 require 'xcop/rake_task'
 Xcop::RakeTask.new(:xcop) do |task|
-  task.license = 'LICENSE.txt'
   task.includes = ['**/*.xml', '**/*.xsl', '**/*.xsd', '**/*.html']
   task.excludes = ['mergem/**', 'coverage/**', 'vendor/**']
 end

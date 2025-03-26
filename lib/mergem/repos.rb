@@ -27,7 +27,7 @@ class Mergem::Repos
         names << repo
       end
     end
-    names.each do |n|
+    names.shuffle.each do |n|
       r = @api.repository(n)
       if r[:archived]
         @loog.debug("Repository #{n} is archived, ignoring")

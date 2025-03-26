@@ -10,6 +10,10 @@ AllCops:
   TargetRubyVersion: 2.2
   NewCops: enable
   SuggestExtensions: false
+plugins:
+  - rubocop-rake
+  - rubocop-minitest
+  - rubocop-performance
 Minitest/EmptyLineBeforeAssertionMethods:
   Enabled: false
 Metrics/CyclomaticComplexity:
@@ -28,7 +32,3 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
-require:
-  - rubocop-rake
-  - rubocop-minitest
-  - rubocop-performance
