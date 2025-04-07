@@ -1,9 +1,9 @@
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
-[![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/mergem)](http://www.rultor.com/p/yegor256/mergem)
+[![DevOps By Rultor.com](https://www.rultor.com/b/yegor256/mergem)](https://www.rultor.com/p/yegor256/mergem)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
 [![rake](https://github.com/yegor256/mergem/actions/workflows/rake.yml/badge.svg)](https://github.com/yegor256/mergem/actions/workflows/rake.yml)
-[![Gem Version](https://badge.fury.io/rb/mergem.svg)](http://badge.fury.io/rb/mergem)
+[![Gem Version](https://badge.fury.io/rb/mergem.svg)](https://badge.fury.io/rb/mergem)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/mergem/blob/master/LICENSE.txt)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yegor256/mergem.svg)](https://codecov.io/github/yegor256/mergem?branch=master)
 [![Hits-of-Code](https://hitsofcode.com/github/yegor256/mergem)](https://hitsofcode.com/view/github/yegor256/mergem)
