@@ -28,7 +28,8 @@ which were not yet discussed by the owner of the token. Then, it will ignore
 those pull requests that are coming not
 from [Renovate](https://github.com/apps/renovate)
 or [Dependabot](https://github.com/dependabot). Then, it will
-post `@rultor please, try to merge` text message to each pull request left in the list.
+post `@rultor please, try to merge` text message to each pull
+request left in the list.
 
 ## Token
 
@@ -64,7 +65,7 @@ Read about [setting a personal access][PAT] token policy for your organization.
 
 ## How to contribute
 
-Read [these guidelines](https://www.yegor256.com/2014/04/15/github-guidelines.html).
+Read these [guidelines].
 Make sure your build is green before you contribute your pull request. You will
 need to have [Ruby](https://www.ruby-lang.org/en/) 2.3+
 and [Bundler](https://bundler.io/) installed. Then:
@@ -83,3 +84,4 @@ bundle exec ruby test/test_askrultor.rb
 ```
 
 [PAT]: https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization
+[guidelines]: https://www.yegor256.com/2014/04/15/github-guidelines.html
