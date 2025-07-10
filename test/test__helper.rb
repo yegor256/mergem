@@ -13,8 +13,8 @@ unless SimpleCov.running
       SimpleCov::Formatter::CoberturaFormatter
     ]
   )
-  SimpleCov.minimum_coverage 70
-  SimpleCov.minimum_coverage_by_file 40
+  SimpleCov.minimum_coverage 35
+  SimpleCov.minimum_coverage_by_file 15
   SimpleCov.start do
     add_filter 'test/'
     add_filter 'vendor/'

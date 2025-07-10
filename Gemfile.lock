@@ -5,8 +5,8 @@ PATH
       backtrace (~> 0.3)
       iri (~> 0.5)
       loog (~> 0.2)
-      obk (= 0.3.0)
-      octokit (> 0)
+      obk (~> 0.3)
+      octokit (~> 10.0)
       rainbow (~> 3.0)
       slop (~> 4.4)
       tacky (~> 0.3)
@@ -83,7 +83,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
-    obk (0.3.0)
+    obk (0.3.2)
     octokit (10.0.0)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
@@ -177,7 +177,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.7)
   simplecov (~> 0.22)
   simplecov-cobertura (~> 2.1)
-  xcop (> 0)
+  xcop (~> 0.8)
 
 BUNDLED WITH
    2.5.16
