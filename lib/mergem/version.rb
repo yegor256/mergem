@@ -6,5 +6,5 @@
 # Copyright:: Copyright (c) 2022-2025 Yegor Bugayenko
 # License:: MIT
 module Mergem
-  VERSION = '0.0.0'.freeze
+  VERSION = '0.1.0'.freeze
 end
