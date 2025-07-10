@@ -1,3 +1,5 @@
+# Auto-Ask Rultor to Merge Pull Requests from Robots
+
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![DevOps By Rultor.com](https://www.rultor.com/b/yegor256/mergem)](https://www.rultor.com/p/yegor256/mergem)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
@@ -12,13 +14,13 @@ This simple script may help you deal with pull requests
 coming to your GitHub repositories from robots:
 
 ```bash
-$ gem install mergem
+gem install mergem
 ```
 
 Then, run it locally and read its output:
 
 ```bash
-$ mergem --repo yegor256/mergem --verbose --token <YOUR_GITHUB_TOKEN>
+mergem --repo yegor256/mergem --verbose --token <YOUR_GITHUB_TOKEN>
 ```
 
 First, it will find all pull requests in `yegor256/mergem` GitHub repository,
@@ -59,9 +61,7 @@ obtain additional approval from the organization.
 > prompted
 > to opt-in and set policies when you follow the steps below.
 
-You can find information about setting a personal access token policy for your
-organization
-right [here](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
+Read about [setting a personal access][PAT] token policy for your organization.
 
 ## How to contribute
 
@@ -70,15 +70,17 @@ Make sure your build is green before you contribute your pull request. You will
 need to have [Ruby](https://www.ruby-lang.org/en/) 2.3+
 and [Bundler](https://bundler.io/) installed. Then:
 
-```
-$ bundle update
-$ bundle exec rake
+```bash
+bundle update
+bundle exec rake
 ```
 
 If it's clean and you don't see any error messages, submit your pull request.
 
 In order to run a single test:
 
+```bash
+bundle exec ruby test/test_askrultor.rb
 ```
-$ bundle exec ruby test/test_askrultor.rb
-```
+
+[PAT]: https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization
