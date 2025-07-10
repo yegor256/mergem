@@ -47,7 +47,7 @@ class Mergem::AskRultor
     end
     @loog.debug("All #{checks.count} check(s) completed successfully in #{title}")
     msg = '@rultor please, try to merge'
-    msg += ", since #{checks.count} checks have passed" if checks.count > 0
+    msg += ", since #{checks.count} checks have passed" if checks.any?
     @api.add_comment(repo, num, msg)
     @loog.info("Comment added to #{title}")
     true
