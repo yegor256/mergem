@@ -14,7 +14,7 @@ def version
   Gem::Specification.load(Dir['*.gemspec'].first).version
 end
 
-task default: %i[clean test features rubocop xcop]
+task default: %i[clean test features rubocop]
 
 require 'rake/testtask'
 desc 'Run all unit tests'
@@ -39,12 +39,6 @@ desc 'Run RuboCop on all directories'
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.fail_on_error = true
   task.options = ['--display-cop-names']
-end
-
-require 'xcop/rake_task'
-Xcop::RakeTask.new(:xcop) do |task|
-  task.includes = ['**/*.xml', '**/*.xsl', '**/*.xsd', '**/*.html']
-  task.excludes = ['mergem/**', 'coverage/**', 'vendor/**']
 end
 
 require 'cucumber/rake/task'
