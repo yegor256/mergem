@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.version = Mergem::VERSION
   s.license = 'MIT'
   s.metadata = { 'rubygems_mfa_required' => 'true' }
-  s.summary = 'GitHub API client the deals with Pull Requests'
+  s.summary = 'GitHub API client that deals with Pull Requests'
   s.description = 'tbd...'
   s.authors = ['Yegor Bugayenko']
   s.email = 'yegor256@gmail.com'
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'backtrace', '~>0.3'
   s.add_dependency 'iri', '~>0.5'
   s.add_dependency 'loog', '~>0.2'
+  s.add_dependency 'nokogiri', '~>1.18'
   s.add_dependency 'obk', '~>0.3'
   s.add_dependency 'octokit', '~>10.0'
   s.add_dependency 'rainbow', '~>3.0'

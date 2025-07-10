@@ -28,7 +28,7 @@ which were not yet discussed by the owner of the token. Then, it will ignore
 those pull requests that are coming not
 from [Renovate](https://github.com/apps/renovate)
 or [Dependabot](https://github.com/dependabot). Then, it will
-post `@rultor merge` text message to each pull request left in the list.
+post `@rultor please, try to merge` text message to each pull request left in the list.
 
 ## Token
 

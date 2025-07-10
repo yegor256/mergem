@@ -29,7 +29,7 @@ end
 When(%r{^I run bin/mergem with "([^"]*)"$}) do |arg|
   home = File.join(File.dirname(__FILE__), '../..')
   @stdout = `ruby -I#{home}/lib #{home}/bin/mergem #{arg}`
-  @exitstatus = $CHILD_STATUS.exitstatus
+  @status = $CHILD_STATUS.exitstatus
 end
 
 Then(/^Stdout contains "([^"]*)"$/) do |txt|
@@ -41,23 +41,23 @@ Then(/^Stdout is empty$/) do
 end
 
 Then(/^Exit code is zero$/) do
-  raise "Non-zero exit #{@exitstatus}:\n#{@stdout}" unless @exitstatus.zero?
+  raise "Non-zero exit #{@status}:\n#{@stdout}" unless @status.zero?
 end
 
 Then(/^Exit code is not zero$/) do
-  raise 'Zero exit code' if @exitstatus.zero?
+  raise 'Zero exit code' if @status.zero?
 end
 
 When(/^I run bash with "([^"]*)"$/) do |text|
   FileUtils.copy_entry(@cwd, File.join(@dir, 'mergem'))
   @stdout = `#{text}`
-  @exitstatus = $CHILD_STATUS.exitstatus
+  @status = $CHILD_STATUS.exitstatus
 end
 
 When(/^I run bash with:$/) do |text|
   FileUtils.copy_entry(@cwd, File.join(@dir, 'mergem'))
   @stdout = `#{text}`
-  @exitstatus = $CHILD_STATUS.exitstatus
+  @status = $CHILD_STATUS.exitstatus
 end
 
 Given(/^It is Unix$/) do

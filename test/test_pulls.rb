@@ -11,7 +11,7 @@ require_relative '../lib/mergem/pulls'
 # Copyright:: Copyright (c) 2022-2025 Yegor Bugayenko
 # License:: MIT
 class TestPulls < Minitest::Test
-  def test_real
+  def test_fetches_pull_requests_from_repository
     api = Octokit::Client.new
     m = Mergem::Pulls.new(api, Loog::VERBOSE, 'yegor256/blog')
     ms = []
@@ -20,7 +20,6 @@ class TestPulls < Minitest::Test
     end
     refute_empty(ms)
     assert_equal(total, ms.count)
-    p ms
   rescue Octokit::TooManyRequests => e
     puts e.message
     skip('It is OK')

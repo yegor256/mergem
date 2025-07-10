@@ -11,7 +11,7 @@ require_relative '../lib/mergem/askrultor'
 # Copyright:: Copyright (c) 2022-2025 Yegor Bugayenko
 # License:: MIT
 class TestAskRultor < Minitest::Test
-  def test_real
+  def test_asks_rultor_to_merge_pull_request
     api = Octokit::Client.new
     m = Mergem::AskRultor.new(api, Loog::VERBOSE)
     asked = m.ask('yegor256/mergem', 1)
