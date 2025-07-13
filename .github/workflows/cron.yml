@@ -5,7 +5,7 @@
 name: cron
 'on':
   schedule:
-    - cron: '17 * * * *'
+    - cron: '17 2,8,16 * * *'
 jobs:
   cron:
     timeout-minutes: 45
