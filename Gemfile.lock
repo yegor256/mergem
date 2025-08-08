@@ -166,7 +166,7 @@ DEPENDENCIES
   minitest-reporters (~> 1.7)
   rake (~> 13.1)
   rdoc (~> 6.6)
-  rubocop (~> 1.64)
+  rubocop (~> 1.79)
   rubocop-minitest (~> 0.38)
   rubocop-performance (~> 1.25)
   rubocop-rake (~> 0.7)
