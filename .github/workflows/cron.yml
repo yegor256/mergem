@@ -24,11 +24,15 @@ jobs:
           bundle exec ruby bin/mergem --verbose \
             --token=${{ secrets.TOKEN }} \
             --repo=yegor256/* \
+            --repo=cqfn/* \
             --repo=objectionary/* \
             --repo=zerocracy/* \
             --repo=polystat/* \
             --repo=sttc/* \
             --repo=zold-io/* \
             --repo=jcabi/* \
+            --exclude=cqfn/astranaut \
+            --exclude=cqfn/astranaut-core \
+            --exclude=cqfn/astranaut-maven-plugin \
             --exclude=objectionary/ineo-maven-plugin \
             --exclude=objectionary/jeo-maven-plugin
