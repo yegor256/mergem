@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: Copyright (c) 2022-2025 Yegor Bugayenko
+# SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'minitest/autorun'
@@ -8,7 +8,7 @@ require_relative '../lib/mergem/repos'
 
 # Test for Repos.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
-# Copyright:: Copyright (c) 2022-2025 Yegor Bugayenko
+# Copyright:: Copyright (c) 2022-2026 Yegor Bugayenko
 # License:: MIT
 class TestRepos < Minitest::Test
   def test_finds_repositories_from_multiple_sources
