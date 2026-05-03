@@ -32,9 +32,9 @@ opts = Slop.parse(args, strict: true, help: true) do |o|
   o.banner = "Usage (#{Mergem::VERSION}): mergem [options]"
   o.bool '-h', '--help', 'Show these instructions'
   o.bool '--version', 'Show current version'
-  o.bool '--verbose', 'Print as much log messages as possible'
+  o.bool '--verbose', 'Print as many log messages as possible'
   o.bool '--dry', 'Make no real round trips to GitHub'
-  o.string '--cache', 'Use this file as a cache, to avoid duplicated roudtrips to GitHub', default: '.mergem-cache'
+  o.string '--cache', 'Use this file as a cache, to avoid duplicated round trips to GitHub', default: '.mergem-cache'
   o.string '--github-cache', 'Place in GitHub for cache file, e.g. "yegor256/mergem/cache/latest.txt" (repo, branch, path)'
   o.integer '--delay', 'Delay between HTTP calls to GitHub API, in milliseconds', default: 100
   o.string '--token', 'GitHub authentication token'
