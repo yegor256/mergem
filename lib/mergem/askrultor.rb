@@ -19,9 +19,8 @@ class Mergem::AskRultor
       user = 'yegor256'
       @loog.debug('You are not using GitHub token :( Try to use --token option.')
     end
-    issue = @api.issue(repo, num)
     title = "#{repo}##{num}"
-    author = issue[:user][:login]
+    author = @api.issue(repo, num)[:user][:login]
     unless @bots.include?(author)
       @loog.debug("#{title} is authored by @#{author} (not a bot)")
       return true
@@ -32,8 +31,7 @@ class Mergem::AskRultor
       @loog.debug("#{title} was already discussed by @#{user}")
       return true
     end
-    sha = @api.pull_request(repo, num)[:head][:sha]
-    checks = @api.check_runs_for_ref(repo, sha)[:check_runs]
+    checks = @api.check_runs_for_ref(repo, @api.pull_request(repo, num)[:head][:sha])[:check_runs]
     checks.each do |check|
       if check[:status] != 'completed'
         @loog.debug("Check #{check[:id]} at #{title} is still running, let's try to merge later")

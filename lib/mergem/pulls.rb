@@ -17,7 +17,7 @@ class Mergem::Pulls
     @loog.debug("Found #{json.count} pull requests in #{@repo}")
     total = 0
     json.each do |p|
-      yield p[:number]
+      yield(p[:number])
       total += 1
     end
     total

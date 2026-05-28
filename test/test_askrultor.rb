@@ -1,9 +1,9 @@
+require 'loog'
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'minitest/autorun'
 require 'octokit'
-require 'loog'
 require_relative '../lib/mergem/askrultor'
 
 # Test for AskRultor.
@@ -12,12 +12,9 @@ require_relative '../lib/mergem/askrultor'
 # License:: MIT
 class TestAskRultor < Minitest::Test
   def test_asks_rultor_to_merge_pull_request
-    api = Octokit::Client.new
-    m = Mergem::AskRultor.new(api, Loog::VERBOSE)
-    asked = m.ask('yegor256/mergem', 1)
-    assert(asked)
+    assert(Mergem::AskRultor.new(Octokit::Client.new, Loog::VERBOSE).ask('yegor256/mergem', 1))
   rescue Octokit::TooManyRequests => e
-    puts e.message
+    puts(e.message)
     skip('It is OK')
   end
 end

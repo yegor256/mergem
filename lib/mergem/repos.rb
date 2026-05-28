@@ -33,7 +33,7 @@ class Mergem::Repos
         @loog.debug("Repository #{n} is archived, ignoring")
         next
       end
-      yield n
+      yield(n)
       total += 1
     end
     total

@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-require 'rubygems'
 require 'rake'
-require 'rdoc'
 require 'rake/clean'
+require 'rdoc'
+require 'rubygems'
 
 def name
   @name ||= File.basename(Dir['*.gemspec'].first, '.*')

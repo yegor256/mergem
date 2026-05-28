@@ -1,9 +1,9 @@
+require 'loog'
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
 require 'minitest/autorun'
 require 'octokit'
-require 'loog'
 require_relative '../lib/mergem/pulls'
 
 # Test for Pulls.
@@ -12,16 +12,12 @@ require_relative '../lib/mergem/pulls'
 # License:: MIT
 class TestPulls < Minitest::Test
   def test_fetches_pull_requests_from_repository
-    api = Octokit::Client.new
-    m = Mergem::Pulls.new(api, Loog::VERBOSE, 'yegor256/blog')
+    m = Mergem::Pulls.new(Octokit::Client.new, Loog::VERBOSE, 'yegor256/blog')
     ms = []
-    total = m.each do |pr|
-      ms << "##{pr}"
-    end
+    assert_equal(m.each { |pr| ms << "##{pr}" }, ms.count)
     refute_empty(ms)
-    assert_equal(total, ms.count)
   rescue Octokit::TooManyRequests => e
-    puts e.message
+    puts(e.message)
     skip('It is OK')
   end
 end
