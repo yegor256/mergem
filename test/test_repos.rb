@@ -21,6 +21,21 @@ class TestRepos < Minitest::Test
     skip('It is OK')
   end
 
+  def test_skips_excluded_repository_offline
+    assert_equal(
+      0,
+      Mergem::Repos.new(
+        Class.new do
+          def repository(name)
+            raise(StandardError, "Repository #{name} was fetched")
+          end
+        end.new,
+        Loog::NULL, ['foo/bar'], ['foo/bar']
+      ).each,
+      'Excluded repository was not skipped'
+    )
+  end
+
   def test_ignores_archived_repositories
     assert_equal(0, Mergem::Repos.new(Octokit::Client.new, Loog::VERBOSE, ['polystat/j2ast']).each)
   rescue Octokit::TooManyRequests => e
