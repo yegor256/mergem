@@ -93,24 +93,24 @@ begin
   else
     seen = File.readlines(cache, chomp: true).map { |t| t.strip }
     total = 0
-    Mergem::Repos.new(api, loog, opts[:repo]).each do |repo|
-      if opts[:exclude].include?(repo)
-        loog.debug("'#{repo}' skipped because of --exclude")
-        next
-      end
-      total += Mergem::Pulls.new(api, loog, repo).each do |pr|
-        title = "#{repo}##{pr}"
-        if seen.include?(title)
-          loog.debug("'#{title}' is already in cache, skipping it")
-          next
-        end
-        if Mergem::AskRultor.new(api, loog).ask(repo, pr)
-          seen << title
-          loog.info("#{title} checked")
-        else
-          loog.info("#{title} must be checked later")
+    begin
+      Mergem::Repos.new(api, loog, opts[:repo], opts[:exclude]).each do |repo|
+        total += Mergem::Pulls.new(api, loog, repo).each do |pr|
+          title = "#{repo}##{pr}"
+          if seen.include?(title)
+            loog.debug("'#{title}' is already in cache, skipping it")
+            next
+          end
+          if Mergem::AskRultor.new(api, loog).ask(repo, pr)
+            seen << title
+            loog.info("#{title} checked")
+          else
+            loog.info("#{title} must be checked later")
+          end
         end
       end
+    rescue Octokit::TooManyRequests => e
+      loog.warn("GitHub API rate limit is exhausted after #{total} PRs, the rest will be checked next time: #{e.message}")
     end
     File.write(cache, seen.join("\n"))
   end
