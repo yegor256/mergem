@@ -6,10 +6,11 @@
 # Copyright:: Copyright (c) 2022-2026 Yegor Bugayenko
 # License:: MIT
 class Mergem::Repos
-  def initialize(api, loog, masks)
+  def initialize(api, loog, masks, excludes = [])
     @api = api
     @loog = loog
     @masks = masks
+    @excludes = excludes
   end
 
   def each
@@ -28,6 +29,10 @@ class Mergem::Repos
       end
     end
     names.shuffle.each do |n|
+      if @excludes.include?(n)
+        @loog.debug("'#{n}' skipped because of --exclude")
+        next
+      end
       r = @api.repository(n)
       if r[:archived]
         @loog.debug("Repository #{n} is archived, ignoring")
