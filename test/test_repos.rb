@@ -1,7 +1,7 @@
-require 'loog'
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
+require 'loog'
 require 'minitest/autorun'
 require 'octokit'
 require_relative '../lib/mergem/repos'
@@ -19,6 +19,21 @@ class TestRepos < Minitest::Test
   rescue Octokit::TooManyRequests => e
     puts(e.message)
     skip('It is OK')
+  end
+
+  def test_skips_excluded_repository_offline
+    assert_equal(
+      0,
+      Mergem::Repos.new(
+        Class.new do
+          def repository(name)
+            raise(StandardError, "Repository #{name} was fetched")
+          end
+        end.new,
+        Loog::NULL, ['foo/bar'], ['foo/bar']
+      ).each,
+      'Excluded repository was not skipped'
+    )
   end
 
   def test_ignores_archived_repositories

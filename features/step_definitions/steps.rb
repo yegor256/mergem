@@ -1,7 +1,7 @@
-require 'English'
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
+require 'English'
 require 'nokogiri'
 require 'slop'
 require 'tmpdir'

@@ -1,7 +1,7 @@
-require 'loog'
 # SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
+require 'loog'
 require 'minitest/autorun'
 require 'octokit'
 require_relative '../lib/mergem/askrultor'
