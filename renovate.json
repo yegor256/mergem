@@ -10,5 +10,7 @@
       "matchFileNames": [".github/workflows/cron.yml"],
       "enabled": false
     }
-  ]
+  ],
+  "automerge": true,
+  "platformAutomerge": false
 }
