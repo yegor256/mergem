@@ -11,6 +11,23 @@ require_relative '../lib/mergem/repos'
 # Copyright:: Copyright (c) 2022-2026 Yegor Bugayenko
 # License:: MIT
 class TestRepos < Minitest::Test
+  def test_deduplicates_overlapping_masks
+    repos = Mergem::Repos.new(
+      Class.new do
+        define_method(:repositories) do |_org|
+          [{ 'full_name' => 'foo/bar' }, { 'full_name' => 'foo/baz' }]
+        end
+        define_method(:repository) do |_name|
+          { archived: false }
+        end
+      end.new,
+      Loog::NULL, ['foo/*', 'foo/bar', 'foo/*', 'foo/bar']
+    )
+    names = []
+    assert_equal(2, repos.each { |name| names << name })
+    assert_equal(['foo/bar', 'foo/baz'], names.sort)
+  end
+
   def test_finds_repositories_from_multiple_sources
     r = Mergem::Repos.new(Octokit::Client.new, Loog::VERBOSE, ['yegor256/blog', 'polystat/*'])
     ms = []

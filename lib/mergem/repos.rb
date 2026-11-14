@@ -28,7 +28,7 @@ class Mergem::Repos
         names << repo
       end
     end
-    names.shuffle.each do |n|
+    names.uniq.shuffle!.each do |n|
       if @excludes.include?(n)
         @loog.debug("'#{n}' skipped because of --exclude")
         next
