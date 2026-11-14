@@ -38,8 +38,8 @@ class Mergem::AskRultor
         return false
       end
       if check[:conclusion] != 'success'
-        @loog.debug("Check #{check[:id]} at #{title} failed, no reason to try to merge")
-        return true
+        @loog.debug("Check #{check[:id]} at #{title} failed, let's try to merge later")
+        return false
       end
       @loog.debug("Check #{check[:id]} at #{title} is '#{check[:status]}/#{check[:conclusion]}', good!")
     end
